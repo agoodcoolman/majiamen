@@ -9,25 +9,26 @@
       <div class="list card">
         <div class="item item-input">
           <i class="ion ion-android-phone-portrait positive iconMargin"></i>
-          &emsp;&emsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="tel" maxlength="11" placeholder="账号" ng-model="user.username" >
         </div>
+
         <div class="item item-input">
           <i class="ion ion-ios-locked positive iconMargin"></i>
-          &emsp;&emsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="password" placeholder="密码" ng-model="user.password">
         </div>
-        <div class="item item-select">
-          <i class="ion positive ion-outlet"></i>
-          &emsp;&emsp;
-          安全问题
-          <div   ng-model="user.securityquestion" >
+
+        <div class="item item-input" ng-click="openPopover($event)" >
+          <i class="ion ion-android-phone-portrait positive ion-outlet"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="安全问题" ng-model="user.securityquestion" >
         </div>
       </div>
       <div class="btn">
-        <div class="button button-block button-positive" ng-click="">登录</div>
+        <div class="button button-block button-positive" ng-click="showba()">登录</div>
       </div>
-      <a ui-sref="forgetPwd" class="forgetPwd" ng-click="">忘记密码?</a>
+      <a ui-sref="forgetPwd" class="forgetPwd" ng-click="showba()">忘记密码?</a>
 
     </ion-content>
 
