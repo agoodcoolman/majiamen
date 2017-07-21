@@ -4,7 +4,7 @@
     </ion-header-bar>
     <ion-content>
        <ion-list>
-           <ion-item ng-repeat="question in questions">
+           <ion-item class="item-divider" ng-repeat="question in questions" ng-click="choice(question)">
                 {{question.question}}
            </ion-item>
 

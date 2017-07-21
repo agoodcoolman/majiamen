@@ -7,6 +7,12 @@ angular.module('mjm.login', [])
         // 登陆
     };
 
+      $scope.choice = function (question) {
+          $scope.choice_question = question.question;
+          // alert("choice_question" + question.question);
+          $scope.colsePopover();
+      };
+
     $scope.showTheChoice = $ionicPopover.fromTemplateUrl("js/login/SecurityQuestionPopover.html", {
         scope:$scope
     }).then(function (popover) {
@@ -14,7 +20,7 @@ angular.module('mjm.login', [])
     });
 
     $scope.showba = function () {
-      alert("haode");
+
     };
 
 
@@ -22,9 +28,11 @@ angular.module('mjm.login', [])
         $scope.popover.show($event);
     };
 
-    $scope.colsePopover = function ($event) {
+    $scope.colsePopover = function () {
         $scope.popover.hide();
     };
+
+
 
     $scope.questions = [
         {question: "无安全问题"},
