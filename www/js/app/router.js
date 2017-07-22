@@ -22,21 +22,21 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         controller: 'loginCtrl'
 
       })
-      .state('tab.dash', {
-        url: '/dash',
+      .state('tab.it', {
+        url: '/it',
         views: {
-          'tab-dash': {
-            templateUrl: 'templates/tab-dash.html',
-            controller: 'DashCtrl'
+          'tab-it': {
+            templateUrl: 'templates/tab-it.html',
+            controller: 'itCtrl'
           }
         }
       })
-      .state('tab.chats', {
-        url: '/chats',
+      .state('tab.your', {
+        url: '/your',
         views: {
-          'tab-chats': {
-            templateUrl: 'templates/tab-chats.html',
-            controller: 'ChatsCtrl'
+          'tab-your': {
+            templateUrl: 'templates/tab-your.html',
+            controller: 'yourCtrl'
           }
         }
       })
@@ -50,12 +50,12 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         }
       })
 
-      .state('tab.account', {
-        url: '/account',
+      .state('tab.wo', {
+        url: '/wo',
         views: {
-          'tab-account': {
-            templateUrl: 'templates/tab-account.html',
-            controller: 'AccountCtrl'
+          'tab-wo': {
+            templateUrl: 'templates/tab-wo.html',
+            controller: 'woCtrl'
           }
         }
       });

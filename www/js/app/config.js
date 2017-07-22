@@ -17,3 +17,7 @@ angular.module('mjm.config', [])
   $ionicConfigProvider.platform.ios.views.transition('ios');
   $ionicConfigProvider.platform.android.views.transition('android');
 })
+  .constant('ENV', {
+    "webUrl":"http://www.majiamen.com/",
+    "login":"login.php?"
+  })

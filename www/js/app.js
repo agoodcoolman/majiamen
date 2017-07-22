@@ -10,6 +10,10 @@ angular.module('starter', ['ionic',
   'mjm.login',
   'mjm.router',
   'mjm.config',
+  'mjm.loginService',
+  'mjm.tab.wo',
+  'mjm.tab.your',
+  'mjm.tab.it',
   'starter.services'])
 
 .run(function($ionicPlatform) {

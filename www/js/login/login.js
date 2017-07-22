@@ -2,7 +2,7 @@
  * Created by jin on 2017/7/21.
  */
 angular.module('mjm.login', [])
-  .controller('loginCtrl', function ($scope, $ionicPopover) {
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory,$state) {
     $scope.login = function () {
         // 登陆
     };
@@ -13,7 +13,7 @@ angular.module('mjm.login', [])
           $scope.colsePopover();
       };
 
-    $scope.showTheChoice = $ionicPopover.fromTemplateUrl("js/login/SecurityQuestionPopover.html", {
+    $scope.showTheChoice = $ionicPopover.fromTemplateUrl("html/login/SecurityQuestionPopover.html", {
         scope:$scope
     }).then(function (popover) {
         $scope.popover = popover;
@@ -43,7 +43,18 @@ angular.module('mjm.login', [])
         $scope.popover.hide();
     };
 
+    $scope.login = function () {
+     /* var login = $loginFactory.login(
+        $scope.username,
+        $scope.password,
+        $scope.choice_question,
+        $scope.choice_question_answer
+      );*/
 
+      $state.go('tab.it')
+
+
+    };
 
     $scope.questions = [
         {question: "无安全问题"},
