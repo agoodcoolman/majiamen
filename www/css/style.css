@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+.image-circle {
+  height: 40vw;
+  width: 40vw;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px gray;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

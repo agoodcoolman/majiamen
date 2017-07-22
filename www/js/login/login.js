@@ -44,14 +44,14 @@ angular.module('mjm.login', [])
     };
 
     $scope.login = function () {
-     var login = $loginFactory.login(
+     /*var login = $loginFactory.login(
         $scope.username,
         $scope.password,
         $scope.choice_question,
         $scope.choice_question_answer
       );
-
-      // $state.go('tab.it')
+*/
+      $state.go('tab.it')
 
 
     };
