@@ -1,5 +1,5 @@
 
-<ion-view view-title="登陆">
+<ion-view view-title="登陆" >
     <ion-content class="contentFlow" >
       <div class="logo" style="text-align: center;margin-top: 20px" >
         <div>
@@ -20,16 +20,25 @@
         </div>
 
         <div class="item item-input" ng-click="openPopover($event)" >
-          <i class="ion ion-android-phone-portrait positive ion-outlet"></i>
+          <i class="ion ion-android-phone-portrait positive"></i>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="text" placeholder="安全问题" ng-model="choice_question">
+          <input type="text" placeholder="安全问题" ng-model="choice_question" disabled="false">
+        </div>
+
+        <div class="item item-input" >
+          <i class="icon ion-lock-combination positive "></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="您的答案" ng-model="choice_question_answer" >
         </div>
       </div>
       <div class="btn">
         <div class="button button-block button-positive" ng-click="showba()">登录</div>
       </div>
-      <a ui-sref="forgetPwd" class="forgetPwd" ng-click="showba()">忘记密码?</a>
+      <a  class="forgetPwd" ng-click="showforgetPassword()">忘记密码?</a>
 
+      <div class="center">
+        <i>&copy;2017 MaJiaMen</i>
+      </div>
     </ion-content>
 
 </ion-view>

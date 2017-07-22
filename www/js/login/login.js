@@ -19,8 +19,19 @@ angular.module('mjm.login', [])
         $scope.popover = popover;
     });
 
-    $scope.showba = function () {
+    $scope.showforgetPassword = function () {
 
+      window.plugins.toast.showWithOptions({
+        message:"忘记密码，请在PC浏览器上找回，么么哒~",
+        duration: "short",
+        position: "center",
+        addPixelsY: -40
+
+      }, function (sucess) {
+
+      }, function (error) {
+
+      });
     };
 
 

@@ -9,6 +9,7 @@ angular.module('starter', ['ionic',
   'starter.controllers',
   'mjm.login',
   'mjm.router',
+  'mjm.config',
   'starter.services'])
 
 .run(function($ionicPlatform) {
