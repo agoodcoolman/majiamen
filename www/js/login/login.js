@@ -2,21 +2,45 @@
  * Created by jin on 2017/7/21.
  */
 angular.module('mjm.login', [])
-  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory,$state) {
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state) {
+    $scope.username = "";
+    $scope.password = ""
+    $scope.choice_question = "";
+    $scope.choice_question_answer = "";
+
     $scope.login = function () {
-        // 登陆
+      var login = $loginFactory.login(
+        $scope.username,
+        $scope.password,
+        $scope.choice_question,
+        $scope.choice_question_answer,
+        $scope.questionsType = 0
+      );
+
+      // $state.go('tab.it')
+
+
+    };
+    $scope.choice = function (question,$index) {
+        $scope.choice_question = question.question;
+        // alert("choice_question" + question.question);
+        console.log('index', $index);
+        if ($index == 0) {
+          $scope.questionsType = 0;
+        } else if ($index == 1) {
+          $scope.questionsType = -1;
+        } else {
+           $scope.questionsType = $index - 1;
+        }
+
+        $scope.colsePopover();
     };
 
-      $scope.choice = function (question) {
-          $scope.choice_question = question.question;
-          // alert("choice_question" + question.question);
-          $scope.colsePopover();
-      };
-
-    $scope.showTheChoice = $ionicPopover.fromTemplateUrl("html/login/SecurityQuestionPopover.html", {
+    $ionicPopover.fromTemplateUrl("templates/login/SecurityQuestionPopover.html", {
         scope:$scope
     }).then(function (popover) {
-        $scope.popover = popover;
+        console.info(popover);
+        $scope.popoverP = popover;
     });
 
     $scope.showforgetPassword = function () {
@@ -34,27 +58,20 @@ angular.module('mjm.login', [])
       });
     };
 
-
     $scope.openPopover = function ($event) {
-        $scope.popover.show($event);
+
+        if (angular.isUndefined($scope.popoverP)) {
+          console.info('undefined popoverP');
+        } else {
+          $scope.popoverP.show($event);
+        }
     };
 
     $scope.colsePopover = function () {
-        $scope.popover.hide();
+        $scope.popoverP.hide();
     };
 
-    $scope.login = function () {
-     /*var login = $loginFactory.login(
-        $scope.username,
-        $scope.password,
-        $scope.choice_question,
-        $scope.choice_question_answer
-      );
-*/
-      $state.go('tab.it')
 
-
-    };
 
     $scope.questions = [
         {question: "无安全问题"},
@@ -73,8 +90,6 @@ angular.module('mjm.login', [])
         {question: "我最喜欢的论坛"},
         {question: "我最最不喜欢的论坛"},
         {question: "我最喜欢的动画"}
-
-
     ];
 
 
