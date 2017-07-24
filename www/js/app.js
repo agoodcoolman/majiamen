@@ -14,6 +14,7 @@ angular.module('starter', ['ionic',
   'mjm.tab.wo',
   'mjm.tab.your',
   'mjm.tab.it',
+  'mjm.storageService',
   'starter.services'])
 
 .run(function($ionicPlatform) {
