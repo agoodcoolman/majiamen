@@ -2,8 +2,8 @@
  * Created by jin on 2017/7/22.
  */
 
-angular.module('mjm.loginService', ['Encrypt'])
-.factory('$loginFactory', function (ENV, $http, Md5) {
+angular.module('mjm.loginService', ['Encrypt', 'ipCookie'])
+.factory('$loginFactory', ['ENV', '$http', 'Md5', 'ipCookie',  function ( ENV, $http, Md5, ipCookie) {
     var loginFactory = {};
   /**
    *
@@ -17,12 +17,17 @@ angular.module('mjm.loginService', ['Encrypt'])
 
       if (angular.isUndefined(securityQuestion)) {
         securityQuestion = ""
-      };
+      } else {
+        securityQuestion = $URL.encode(securityQuestion);
+      }
       if (angular.isUndefined(answer)) {
         answer = ""
-      };
+      }else {
+        answer = $URL.encode(answer);
+      }
       url = encodeURIComponent('http://www.majiamen.com/index.php');
       username = $URL.encode(username);
+
       var data = 'forward=&jumpurl='+ url+'&step=2&lgt=0&pwuser='+ username+'&pwpwd='+password+'&question='+ questionType+
         '&customquest='+securityQuestion+'&answer='+ answer+'&hideid=0&cktime=31536000';
       console.log('request1', data)
@@ -30,19 +35,27 @@ angular.module('mjm.loginService', ['Encrypt'])
       data2 = encodeURIComponent(password);
       date3 = encodeURI(username);
       console.info('request2', data);
+      var options = {domain:'majiamen.com'}
+      var ipCookie2 = ipCookie('91a70_ipfrom', undefined, options);
       $http({
         method:'POST',
         url:'http://www.majiamen.com/login.php',
         data:data,
         headers:{'Content-Type': 'application/x-www-form-urlencoded'}
-      }).then(function (response) {
-        // alert("login1");
-        console.info(response.data);
-        return response.data;
-      }, function (error) {
-        // alert("login2");
-        return error;
+      }).success(function(data, status, headers, config) {
+        console.log('Set-Cookie: ' +headers('Set-Cookie'));
+        console.info("headers", headers);
+        var length = window.sessionStorage.length;
+        console.info(length, length);
+        // var cookies = $cookies.getAll();
+        // http://www.majiamen.com/thread.php?fid=16
+        console.info(data);
+        return  data;
+      }).error(function(data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        return data;
       })
     };
     return loginFactory;
-})
+}])

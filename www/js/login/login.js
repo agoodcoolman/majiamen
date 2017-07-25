@@ -14,7 +14,7 @@ angular.module('mjm.login', [])
         $scope.password,
         $scope.choice_question,
         $scope.choice_question_answer,
-        $scope.questionsType = 0
+        $scope.questionsType = -1
       );
 
       // $state.go('tab.it')
@@ -45,7 +45,7 @@ angular.module('mjm.login', [])
 
     $scope.showforgetPassword = function () {
 
-      window.plugins.toast.showWithOptions({
+      /*window.plugins.toast.showWithOptions({
         message:"忘记密码，请在PC浏览器上找回，么么哒~",
         duration: "short",
         position: "center",
@@ -55,7 +55,9 @@ angular.module('mjm.login', [])
 
       }, function (error) {
 
-      });
+      });*/
+
+
     };
 
     $scope.openPopover = function ($event) {
