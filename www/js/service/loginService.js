@@ -21,10 +21,11 @@ angular.module('mjm.loginService', ['Encrypt'])
       if (angular.isUndefined(answer)) {
         answer = ""
       };
-      var data = 'forward=&jumpurl=http://www.majiamen.com/index.php&step=2&lgt=0&pwuser='+ username+'&pwpwd='+password+'&question='+ questionType+
+      url = encodeURIComponent('http://www.majiamen.com/index.php');
+      username = $URL.encode(username);
+      var data = 'forward=&jumpurl='+ url+'&step=2&lgt=0&pwuser='+ username+'&pwpwd='+password+'&question='+ questionType+
         '&customquest='+securityQuestion+'&answer='+ answer+'&hideid=0&cktime=31536000';
       console.log('request1', data)
-      data = encodeURIComponent('http://www.majiamen.com/index.php');
       data1 = encodeURIComponent(username);
       data2 = encodeURIComponent(password);
       date3 = encodeURI(username);
