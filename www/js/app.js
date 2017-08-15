@@ -32,6 +32,8 @@ angular.module('starter', [
       StatusBar.styleDefault();
     }
   });
-});
+})
+
+;
 
 

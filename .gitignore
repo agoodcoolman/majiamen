@@ -6,3 +6,6 @@ platforms/
 plugins/
 .idea/
 .editorconfig
+phpwind/cookie
+*.iml
+www/lib/angular-cookie2.min.js

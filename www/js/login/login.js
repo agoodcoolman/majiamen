@@ -1,12 +1,13 @@
 /**
  * Created by jin on 2017/7/21.
  */
-angular.module('mjm.login', [])
-  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state) {
+angular.module('mjm.login', ['ngCookies'])
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $cookies) {
     $scope.username = "";
     $scope.password = ""
     $scope.choice_question = "";
     $scope.choice_question_answer = "";
+    $scope.qcode = getqcode();
 
     $scope.login = function () {
       var login = $loginFactory.login(
@@ -21,6 +22,12 @@ angular.module('mjm.login', [])
 
 
     };
+    function getqcode () {
+      var date = new Date();
+      var qclde = 'www.majiamen.com/ck.php?nowtime=' + date.getTime();
+      return qclde;
+    }
+
     $scope.choice = function (question,$index) {
         $scope.choice_question = question.question;
         // alert("choice_question" + question.question);
@@ -45,7 +52,7 @@ angular.module('mjm.login', [])
 
     $scope.showforgetPassword = function () {
 
-      /*window.plugins.toast.showWithOptions({
+      window.plugins.toast.showWithOptions({
         message:"忘记密码，请在PC浏览器上找回，么么哒~",
         duration: "short",
         position: "center",
@@ -55,7 +62,7 @@ angular.module('mjm.login', [])
 
       }, function (error) {
 
-      });*/
+      });
 
 
     };

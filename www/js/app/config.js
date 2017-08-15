@@ -2,7 +2,7 @@
  * Created by jin on 2017/7/22.
  */
 angular.module('mjm.config', [])
-.config(function ($ionicConfigProvider, $httpProvider ) {
+.config(function ($ionicConfigProvider, $httpProvider) {
   $ionicConfigProvider.platform.ios.tabs.style('standard');
   $ionicConfigProvider.platform.ios.tabs.position('bottom');
   $ionicConfigProvider.platform.android.tabs.style('standard');
@@ -25,7 +25,8 @@ angular.module('mjm.config', [])
       // 可选，拦截成功的请求
       request: function(config) {
         // 进行预处理
-        var l = window.sessionStorage.length;
+
+
 
         return config || $q.when(config);
       },

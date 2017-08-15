@@ -30,7 +30,17 @@
           &nbsp;&nbsp;&nbsp;&nbsp;
           <input type="text" placeholder="您的答案" ng-model="choice_question_answer" >
         </div>
+
+        <div class="item item-input" >
+          <i class="icon ion-lock-combination positive "></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="验证码" ng-model="input_yzm" >
+        </div>
+        <div >
+          <img ng-src="{{qcode}}"/>
+        </div>
       </div>
+
       <div class="btn">
         <div class="button button-block button-positive" ng-click="login()">登录</div>
       </div>
