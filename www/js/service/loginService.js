@@ -42,14 +42,8 @@ angular.module('mjm.loginService', ['Encrypt'])
         console.log('Set-Cookie: ' + headers('Set-Cookie'));
         console.info("headers", headers);
         console.info("data", data);
-
-        var length = window.sessionStorage.length;
-        var length2 = document.cookie.length;
-        console.info('length', length);
-        console.info('length2', length2);
-
-        var elementById = document.getElementById("responseOutput");
-        console.info('elementbyid', elementById);
+        var b = /UID(.{9})/g.exec(data);
+        console.info('datab', b);
         return  data;
       }).error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
