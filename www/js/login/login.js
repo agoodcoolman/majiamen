@@ -6,23 +6,33 @@ angular.module('mjm.login', [])
 
     $scope.username = "小金";
     $scope.password = "1jinmingkai"
-    $scope.choice_question = "我叫什么名字";
+    $scope.choice_question = '';
+    $scope.custom_question = '我叫什么名字';
     $scope.choice_question_answer = "金明凯";
     $scope.nowtime = getcurrenttime();
     $scope.gdcode = {code:''};
+
     if (window.cookies.hasCookies(function () {
         console.info('sucess', 'has cookie')
         $state.go('tab.it')
       }, function (error) {
         console.info('error', 'no cookie')
       }));
+
+
     $scope.login = function () {
       console.info('here', $scope.gdcode.code);
-
+      var question = ''
+      // 如果是自定义的安全问题, 就用自定义里面的问题。
+      if ($scope.questionsType == -1) {
+        question = $scope.custom_question
+      } else {
+        question = $scope.choice_question
+      }
       var login = $loginFactory.login(
         $scope.username,
         $scope.password,
-        $scope.choice_question,
+        question,
         $scope.choice_question_answer,
         $scope.questionsType = -1,
         $scope.gdcode.code

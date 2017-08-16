@@ -25,6 +25,11 @@
           <input type="text" placeholder="安全问题" ng-model="choice_question" disabled="false">
         </div>
 
+        <div class="item item-input" ng-if="questionsType == -1" >
+          <i class="ion ion-android-phone-portrait positive"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="自定义安全问题" ng-model="custom_question" >
+        </div>
         <div class="item item-input" >
           <i class="icon ion-lock-combination positive "></i>
           &nbsp;&nbsp;&nbsp;&nbsp;
