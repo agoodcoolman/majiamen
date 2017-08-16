@@ -34,18 +34,17 @@
         <div class="item item-input" >
           <i class="icon ion-lock-combination positive "></i>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="text" placeholder="验证码" ng-model="input_yzm" >
+          <input type="text" placeholder="验证码" ng-model="gdcode.code" />
         </div>
         <div class="row" >
-          <!--<img class="col col-50 col-offset-25" ng-src="file:///storage/emulated/0/DCIM/Camera/code.gif"/>-->
-          <img class="col col-50 col-offset-25" ng-src="http://www.majiamen.com/ck.php?nowtime=1502851282022"/>
+          <img id="code" class="col col-50 col-offset-25" ng-src="http://www.majiamen.com/ck.php?nowtime={{nowtime}}" ng-click="flush()"/>
+
         </div>
       </div>
+      <div class="button button-block button-positive" ng-click="login()">登录</div>
 
-      <div class="btn">
-        <div class="button button-block button-positive" ng-click="login()">登录</div>
-      </div>
       <a  class="forgetPwd" ng-click="showforgetPassword()">忘记密码?</a>
+
       <a  class="forgetPwd" ng-click="clear()">clear</a>
 
       <div class="center">

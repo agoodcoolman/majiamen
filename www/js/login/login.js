@@ -1,36 +1,50 @@
 /**
  * Created by jin on 2017/7/21.
  */
-angular.module('mjm.login', ['ngCookies'])
-  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $cookies, $document) {
+angular.module('mjm.login', [])
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state) {
+
     $scope.username = "小金";
     $scope.password = "1jinmingkai"
     $scope.choice_question = "我叫什么名字";
     $scope.choice_question_answer = "金明凯";
-    $scope.qcode = getqcode();
-    // window.cacha.clear();
+    $scope.nowtime = getcurrenttime();
+    $scope.gdcode = {code:''};
+    if (window.cookies.hasCookies(function () {
+        console.info('sucess', 'has cookie')
+        $state.go('tab.it')
+      }, function (error) {
+        console.info('error', 'no cookie')
+      }));
     $scope.login = function () {
+      console.info('here', $scope.gdcode.code);
+
       var login = $loginFactory.login(
         $scope.username,
         $scope.password,
         $scope.choice_question,
         $scope.choice_question_answer,
-        $scope.questionsType = -1
+        $scope.questionsType = -1,
+        $scope.gdcode.code
       );
-
       // $state.go('tab.it')
-
-
     };
-    function getqcode () {
+
+    $scope.flush = function () {
+      var currenttime = getcurrenttime();
+
+      $('#code').attr('src', 'http://www.majiamen.com/ck.php?nowtime=' + currenttime);
+      console.info('flush', 'http://www.majiamen.com/ck.php?nowtime=' + currenttime);
+
+    }
+    function getcurrenttime () {
       var date = new Date();
-      var qclde = 'www.majiamen.com/ck.php?nowtime=' + date.getTime();
-      return qclde;
+      return date.getTime();
     }
 
     $scope.choice = function (question,$index) {
         $scope.choice_question = question.question;
-        // alert("choice_question" + question.question);
+
         console.log('index', $index);
         if ($index == 0) {
           $scope.questionsType = 0;
@@ -39,7 +53,6 @@ angular.module('mjm.login', ['ngCookies'])
         } else {
            $scope.questionsType = $index - 1;
         }
-
         $scope.colsePopover();
     };
 
@@ -55,6 +68,7 @@ angular.module('mjm.login', ['ngCookies'])
         console.log('Cookies cleared!');
       });
     };
+
     $scope.showforgetPassword = function () {
 
       window.plugins.toast.showWithOptions({
@@ -64,16 +78,11 @@ angular.module('mjm.login', ['ngCookies'])
         addPixelsY: -40
 
       }, function (sucess) {
-
       }, function (error) {
-
       });
-
-
     };
 
     $scope.openPopover = function ($event) {
-
         if (angular.isUndefined($scope.popoverP)) {
           console.info('undefined popoverP');
         } else {
