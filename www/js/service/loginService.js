@@ -46,6 +46,7 @@ angular.module('mjm.loginService', ['Encrypt', 'ngCookies'])
       }).success(function(data, status, headers, config) {
         console.log('Set-Cookie: ' + headers('Set-Cookie'));
         console.info("headers", headers);
+        console.info("data", data);
         console.log('all ' + $cookies.getAll());
         var length = window.sessionStorage.length;
         var length2 = document.cookie.length;
@@ -54,6 +55,9 @@ angular.module('mjm.loginService', ['Encrypt', 'ngCookies'])
         // var cookies = $cookies.getAll();
         // http://www.majiamen.com/thread.php?fid=16
         // console.info(data);
+
+        var elementById = document.getElementById("responseOutput");
+        console.info('elementbyid', elementById);
         return  data;
       }).error(function(data, status, headers, config) {
         // called asynchronously if an error occurs

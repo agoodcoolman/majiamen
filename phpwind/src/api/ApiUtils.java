@@ -82,6 +82,7 @@ public class ApiUtils {
         try {
             Date date = new Date();
             long time = date.getTime();
+            // http://www.majiamen.com/ck.php?nowtime=1502851282022
             URL loginUrl = new URL(HOST + CODE + "?nowtime=" + time);
             URLConnection urlConnection = loginUrl.openConnection();
             urlConnection.setRequestProperty("Cookie", CookieUtils.getCookie());
@@ -96,16 +97,23 @@ public class ApiUtils {
             PrintWriter printWriter = new PrintWriter(outputStream);
             outputStream.flush();
 
+
             // 定义BufferedReader输入流来读取URL的响应
-            FileOutputStream fileOutputStream = new FileOutputStream(new File("code.gif"));
+          File file = new File("code.gif");
+          if (file.exists())
+              file.delete();
+          file.createNewFile();
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
             byte[] buffer = new byte[1024];
             int length = -1;
-            while ((length = inputStream.read(buffer)) != 0) {
-                fileOutputStream.write(buffer);
+            while ((length = inputStream.read(buffer)) != -1) {
+                fileOutputStream.write(buffer, 0, length);
                 fileOutputStream.flush();
             }
 
             fileOutputStream.close();
+
+            // 保存最新的cookie到本地
             Map<String, List<String>> map = urlConnection.getHeaderFields();
             List<String> cookieList = map.get("Set-Cookie");
             CookieUtils.saveCookie(cookieList);

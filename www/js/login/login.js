@@ -2,13 +2,13 @@
  * Created by jin on 2017/7/21.
  */
 angular.module('mjm.login', ['ngCookies'])
-  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $cookies) {
-    $scope.username = "";
-    $scope.password = ""
-    $scope.choice_question = "";
-    $scope.choice_question_answer = "";
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $cookies, $document) {
+    $scope.username = "小金";
+    $scope.password = "1jinmingkai"
+    $scope.choice_question = "我叫什么名字";
+    $scope.choice_question_answer = "金明凯";
     $scope.qcode = getqcode();
-
+    // window.cacha.clear();
     $scope.login = function () {
       var login = $loginFactory.login(
         $scope.username,
@@ -50,6 +50,11 @@ angular.module('mjm.login', ['ngCookies'])
         $scope.popoverP = popover;
     });
 
+    $scope.clear = function () {
+      window.cookies.clear(function() {
+        console.log('Cookies cleared!');
+      });
+    };
     $scope.showforgetPassword = function () {
 
       window.plugins.toast.showWithOptions({
