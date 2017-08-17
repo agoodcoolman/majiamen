@@ -48,17 +48,28 @@ angular.module('mjm.login', [])
     $scope.$on('login.islogined', function (event, args ) {
       console.info('login', event);
       console.info('login2',args);
-      window.plugins.toast.showWithOptions({
-        message:"登陆成功，让我们浪起来~",
-        duration: "short",
-        position: "center",
-        addPixelsY: -40
 
-      }, function (sucess) {
-      }, function (error) {
-      });
       if (args) {
          $state.go('tab.it')
+        window.plugins.toast.showWithOptions({
+          message:"登陆成功，让我们浪起来~",
+          duration: "short",
+          position: "center",
+          addPixelsY: -40
+        }, function (sucess) {
+
+        }, function (error) {
+        });
+      } else {
+        window.plugins.toast.showWithOptions({
+          message:"哇哦，登陆失败了，不要开小差~",
+          duration: "short",
+          position: "center",
+          addPixelsY: -40
+        }, function (sucess) {
+
+        }, function (error) {
+        });
       }
     }) ;
 

@@ -7,16 +7,29 @@ angular.module('mjm.loginService', ['Encrypt'])
     var loginFactory = {};
 
   /**
-   * 判断是否登陆
+   * 判断是否登陆，保存信息
    * @param data
    */
   function isLogined(data) {
        var b = /您已经为会员身份/.test(data);
        var result = /UID：(.+?)\s\|/.exec(data);
-       console.info('result', result)
-       console.info('result.length', result.length)
-       console.info('result.length.is', angular.isNumber(result[1]))
-       console.info('b', b)
+       var level = /\| 等级：(.+?)\s\|/.exec(data);
+       var signature =  /个性签名：\s<span\sid=\"honor\">([\s\S]+?)</.exec(data);
+       var imagePath = /a\shref=\"profile.php\?action=modify#face\"><img src=\"(.+?)\"/.exec(data);
+       console.info('result', result);
+       console.info('result.length', result.length);
+       console.info('result.length.is', angular.isNumber(result[1]));
+       console.info('b', b);
+
+      console.info('imagepath', imagePath);
+      console.info('level', level);
+      console.info('signature', signature);
+
+       localStorage.setItem('UID', result[1]);
+       localStorage.setItem('portrait', imagePath[1]);
+       localStorage.setItem('level', level[1]);
+       localStorage.setItem('signature', signature[1]);
+
        // 首先判断是否找到
       // 长度大于2
       // 获取后面UID 是否为数字
@@ -25,7 +38,6 @@ angular.module('mjm.loginService', ['Encrypt'])
            return true;
          }
        }
-
        if(b) {
          return true;
        }
@@ -69,7 +81,6 @@ angular.module('mjm.loginService', ['Encrypt'])
         console.log('Set-Cookie: ' + headers('Set-Cookie'));
         console.info("headers", headers);
         console.info("data", data);
-
         var logined = isLogined(data);
         console.info("logined", logined);
         $rootScope.$broadcast('login.islogined', logined);
@@ -81,5 +92,6 @@ angular.module('mjm.loginService', ['Encrypt'])
         return data;
       })
     };
+
     return loginFactory;
 })
