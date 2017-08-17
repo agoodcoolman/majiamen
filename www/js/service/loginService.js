@@ -3,8 +3,31 @@
  */
 
 angular.module('mjm.loginService', ['Encrypt'])
-.factory('$loginFactory', function ( ENV, $http, Md5) {
+.factory('$loginFactory', function ( ENV, $http, Md5, $rootScope) {
     var loginFactory = {};
+
+  /**
+   * 判断是否登陆
+   * @param data
+   */
+  function isLogined(data) {
+       var b = /您已经为会员身份/.test(data);
+       var result = /UID：(.*)|/.exec(data);
+       console.info('result', result)
+       console.info('b', b)
+       // 首先判断是否找到
+      // 长度大于2
+      // 获取后面UID 是否为数字
+       if (!angular.isUndefined(result) && result.length > 1 && angular.isNumber(result[1])) {
+         return true;
+       }
+
+       if(b) {
+         return true;
+       }
+
+       return false;
+    }
   /**
    *
    * @param username 用户
@@ -42,13 +65,15 @@ angular.module('mjm.loginService', ['Encrypt'])
         console.log('Set-Cookie: ' + headers('Set-Cookie'));
         console.info("headers", headers);
         console.info("data", data);
-        var b = /UID(.{9})/g.exec(data);
-        console.info('datab', b);
-        return  data;
+
+        var logined = isLogined(data);
+        console.info("logined", logined);
+        $rootScope.$broadcast('login.islogined', logined);
       }).error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         console.info('error', data);
+        $rootScope.$broadcast('login.islogined', false);
         return data;
       })
     };

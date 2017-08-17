@@ -2,7 +2,7 @@
  * Created by jin on 2017/7/21.
  */
 angular.module('mjm.login', [])
-  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state) {
+  .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $ionicPlatform, $timeout) {
 
     $scope.username = "小金";
     $scope.password = "1jinmingkai"
@@ -12,13 +12,18 @@ angular.module('mjm.login', [])
     $scope.nowtime = getcurrenttime();
     $scope.gdcode = {code:''};
 
+
     if (window.cookies.hasCookies(function () {
         console.info('sucess', 'has cookie')
         $state.go('tab.it')
       }, function (error) {
         console.info('error', 'no cookie')
       }));
-
+    // 设置1秒延时执行，避免用户看到登陆界面闪
+    $timeout(function () {
+      // 隐藏欢迎页面，上面已经决定加载哪个页面了。
+      window.navigator.splashscreen.hide();
+    }, 1000);
 
     $scope.login = function () {
       console.info('here', $scope.gdcode.code);
@@ -37,8 +42,17 @@ angular.module('mjm.login', [])
         $scope.questionsType = -1,
         $scope.gdcode.code
       );
-      // $state.go('tab.it')
+      console.info('login', login);
+
     };
+    $scope.$on('login.islogined', function (event, args ) {
+      console.info('login', event);
+      console.info('login2',args);
+
+      if (args) {
+         $state.go('tab.it')
+      }
+    }) ;
 
     $scope.flush = function () {
       var currenttime = getcurrenttime();
