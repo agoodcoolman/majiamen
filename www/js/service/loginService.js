@@ -12,14 +12,18 @@ angular.module('mjm.loginService', ['Encrypt'])
    */
   function isLogined(data) {
        var b = /您已经为会员身份/.test(data);
-       var result = /UID：(.*)|/.exec(data);
+       var result = /UID：(.+?)\s\|/.exec(data);
        console.info('result', result)
+       console.info('result.length', result.length)
+       console.info('result.length.is', angular.isNumber(result[1]))
        console.info('b', b)
        // 首先判断是否找到
       // 长度大于2
       // 获取后面UID 是否为数字
-       if (!angular.isUndefined(result) && result.length > 1 && angular.isNumber(result[1])) {
-         return true;
+       if (!angular.isUndefined(result) && result.length > 1) {
+         if (angular.isNumber(parseInt(result[1]))) {
+           return true;
+         }
        }
 
        if(b) {

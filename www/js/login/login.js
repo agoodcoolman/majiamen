@@ -48,12 +48,23 @@ angular.module('mjm.login', [])
     $scope.$on('login.islogined', function (event, args ) {
       console.info('login', event);
       console.info('login2',args);
+      window.plugins.toast.showWithOptions({
+        message:"登陆成功，让我们浪起来~",
+        duration: "short",
+        position: "center",
+        addPixelsY: -40
 
+      }, function (sucess) {
+      }, function (error) {
+      });
       if (args) {
          $state.go('tab.it')
       }
     }) ;
 
+    /**
+     * 点击 刷新验证码
+     */
     $scope.flush = function () {
       var currenttime = getcurrenttime();
 
@@ -61,11 +72,19 @@ angular.module('mjm.login', [])
       console.info('flush', 'http://www.majiamen.com/ck.php?nowtime=' + currenttime);
 
     }
+    /*
+     * 获取当前的时间
+     */
     function getcurrenttime () {
       var date = new Date();
       return date.getTime();
     }
 
+    /**
+     * 选择安全问题
+     * @param question
+     * @param $index
+     */
     $scope.choice = function (question,$index) {
         $scope.choice_question = question.question;
 
@@ -87,12 +106,17 @@ angular.module('mjm.login', [])
         $scope.popoverP = popover;
     });
 
+    /*
+      *  清除cookie的功能
+     */
     $scope.clear = function () {
       window.cookies.clear(function() {
         console.log('Cookies cleared!');
       });
     };
-
+    /**
+     * 忘记密码提示
+     */
     $scope.showforgetPassword = function () {
 
       window.plugins.toast.showWithOptions({
@@ -105,7 +129,10 @@ angular.module('mjm.login', [])
       }, function (error) {
       });
     };
-
+    /**
+     * 选择安全问题的界面
+     * @param $event
+     */
     $scope.openPopover = function ($event) {
         if (angular.isUndefined($scope.popoverP)) {
           console.info('undefined popoverP');
