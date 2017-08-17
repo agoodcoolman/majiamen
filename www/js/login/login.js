@@ -177,7 +177,4 @@ angular.module('mjm.login', [])
         {question: "我最喜欢的动画"}
     ];
 
-
-
-
   });

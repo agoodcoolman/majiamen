@@ -9,16 +9,17 @@
         "gulp-sass": "^3.1.0"
     },
     "dependencies": {
+        "com.bez4pieci.cookies": "https://github.com/agoodcoolman/Phonegap-Cookies-Plugin.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-inappbrowser": "^1.7.1",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.1",
         "cordova-plugin-whitelist": "^1.3.1",
         "cordova-plugin-x-toast": "^2.6.0",
         "cordova-remove-cookies": "git+https://github.com/agoodcoolman/Phonegap-Cookies-Plugin.git",
-        "ionic-plugin-keyboard": "^2.2.1",
-        "com.bez4pieci.cookies": "https://github.com/agoodcoolman/Phonegap-Cookies-Plugin.git"
+        "ionic-plugin-keyboard": "^2.2.1"
     },
     "cordova": {
         "plugins": {
@@ -29,7 +30,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "com.bez4pieci.cookies": {}
+            "com.bez4pieci.cookies": {},
+            "cordova-plugin-inappbrowser": {}
         },
         "platforms": [
             "android"

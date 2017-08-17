@@ -28,4 +28,11 @@ angular.module('mjm.tab.wo', [])
       $ionicHistory.clearHistory();
       $ionicHistory.clearCache();
     }
+  /**
+   * 跳转到用户信息
+   */
+  $scope.goMessage = function () {
+    cordova.InAppBrowser.open('http://www.majiamen.com/message.php','_self')
+
+  }
 })
