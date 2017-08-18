@@ -1,26 +1,11 @@
 Ionic App Base
 ==============
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Ionic 的项目
 
-## Using this project
+before_prepare 对Ionic 里面的js进行混淆的项目介绍
+http://blog.csdn.net/u010730126/article/details/50115579 混淆的介绍
+https://www.airpair.com/ionic-framework/posts/production-ready-apps-with-ionic-framework 英文介绍比较靠谱
 
-We recommend using the [Ionic CLI](https://github.com/ionic-team/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic cordova
-```
-
-Then run: 
-
-```bash
-$ ionic start myProject tabs --type=ionic1 --cordova
-```
-
-More info on this can be found on the Ionic [Getting Started](https://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/ionic-team/ionic-cli) repo.
-
-## Issues
-
-Issues have been disabled on this repo. If you do find an issue or have a question, consider posting it on the [Ionic Forum](https://forum.ionicframework.com/). If there is truly an error, follow our guidelines for [submitting an issue](https://ionicframework.com/submit-issue/) to the main Ionic repository.
+如果js，html 文件生成少了，记得要加 templates/**/*.html 其它的文件也是类似的
+https://gist.github.com/agoodcoolman/724b59f1c866aabb11dc34692142e7c3  这个是上面用的文件，自己存的一份

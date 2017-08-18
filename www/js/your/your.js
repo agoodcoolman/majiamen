@@ -6,4 +6,4 @@ angular.module('mjm.tab.your', [])
       $scope.ok = 'hao';
 
 
-  })
+  });

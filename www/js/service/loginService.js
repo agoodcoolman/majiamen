@@ -55,12 +55,12 @@ angular.module('mjm.loginService', ['Encrypt'])
     loginFactory.login = function (username, password, securityQuestion, answer, questionType, gdcode) {
 
       if (angular.isUndefined(securityQuestion)) {
-        securityQuestion = ""
+        securityQuestion = "";
       } else {
         securityQuestion = $URL.encode(securityQuestion);
       }
       if (angular.isUndefined(answer)) {
-        answer = ""
+        answer = "";
       }else {
         answer = $URL.encode(answer);
       }
@@ -69,7 +69,7 @@ angular.module('mjm.loginService', ['Encrypt'])
       console.info('code',gdcode);
       var data = 'forward=&jumpurl='+ url+'&step=2'+'&gdcode='+ gdcode+'&lgt=0&pwuser='+ username+'&pwpwd='+password+'&question='+ questionType +
         '&customquest='+securityQuestion+'&answer='+ answer+'&hideid=0&cktime=31536000';
-      console.log('request1', data)
+      console.log('request1', data);
 
       $http({
         withCredentials: true,
@@ -90,8 +90,8 @@ angular.module('mjm.loginService', ['Encrypt'])
         console.info('error', data);
         $rootScope.$broadcast('login.islogined', false);
         return data;
-      })
+      });
     };
 
     return loginFactory;
-})
+});

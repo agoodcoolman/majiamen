@@ -26,8 +26,6 @@ angular.module('mjm.config', [])
       request: function(config) {
         // 进行预处理
 
-
-
         return config || $q.when(config);
       },
 
@@ -36,7 +34,7 @@ angular.module('mjm.config', [])
         // 对失败的请求进行处理
         // ...
         if (canRecover(rejection)) {
-          return responseOrNewPromise
+          return responseOrNewPromise;
         }
         return $q.reject(rejection);
       },
@@ -55,14 +53,14 @@ angular.module('mjm.config', [])
         // 对失败的响应进行处理
         // ...
         if (canRecover(rejection)) {
-          return responseOrNewPromise
+          return responseOrNewPromise;
         }
         return $q.reject(rejection);
       }
     };
-  })
+  });
 })
   .constant('ENV', {
     "webUrl":"http://www.majiamen.com/",
     "login":"login.php?"
-  })
+  });

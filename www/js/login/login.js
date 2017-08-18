@@ -5,7 +5,7 @@ angular.module('mjm.login', [])
   .controller('loginCtrl', function ($scope, $ionicPopover, ENV, $http, $loginFactory, $state, $ionicPlatform, $timeout) {
 
     $scope.username = "小金";
-    $scope.password = "1jinmingkai"
+    $scope.password = "1jinmingkai";
     $scope.choice_question = '';
     $scope.custom_question = '我叫什么名字';
     $scope.choice_question_answer = "金明凯";
@@ -14,10 +14,10 @@ angular.module('mjm.login', [])
 
 
     if (window.cookies.hasCookies(function () {
-        console.info('sucess', 'has cookie')
-        $state.go('tab.it')
+        console.info('sucess', 'has cookie');
+        $state.go('tab.it');
       }, function (error) {
-        console.info('error', 'no cookie')
+        console.info('error', 'no cookie');
       }));
     // 设置1秒延时执行，避免用户看到登陆界面闪
     $timeout(function () {
@@ -27,12 +27,12 @@ angular.module('mjm.login', [])
 
     $scope.login = function () {
       console.info('here', $scope.gdcode.code);
-      var question = ''
+      var question = '';
       // 如果是自定义的安全问题, 就用自定义里面的问题。
       if ($scope.questionsType == -1) {
-        question = $scope.custom_question
+        question = $scope.custom_question;
       } else {
-        question = $scope.choice_question
+        question = $scope.choice_question;
       }
       var login = $loginFactory.login(
         $scope.username,
@@ -50,7 +50,7 @@ angular.module('mjm.login', [])
       console.info('login2',args);
 
       if (args) {
-         $state.go('tab.it')
+         $state.go('tab.it');
         window.plugins.toast.showWithOptions({
           message:"登陆成功，让我们浪起来~",
           duration: "short",
@@ -82,7 +82,7 @@ angular.module('mjm.login', [])
       $('#code').attr('src', 'http://www.majiamen.com/ck.php?nowtime=' + currenttime);
       console.info('flush', 'http://www.majiamen.com/ck.php?nowtime=' + currenttime);
 
-    }
+    };
     /*
      * 获取当前的时间
      */
@@ -110,7 +110,7 @@ angular.module('mjm.login', [])
         $scope.colsePopover();
     };
 
-    $ionicPopover.fromTemplateUrl("templates/login/SecurityQuestionPopover.html", {
+    $ionicPopover.fromTemplateUrl("login/SecurityQuestionPopover.html", {
         scope:$scope
     }).then(function (popover) {
         console.info(popover);

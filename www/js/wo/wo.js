@@ -9,7 +9,7 @@ angular.module('mjm.tab.wo', [])
       portrait:localStorage.getItem('portrait'),
       level:localStorage.getItem('level'),
       signature:localStorage.getItem('signature')
-    }
+    };
 
     console.info('UID', $scope.wo.UID);
     console.info('portrait', $scope.wo.portrait);
@@ -24,15 +24,15 @@ angular.module('mjm.tab.wo', [])
         console.log('Cookies cleared!');
       });
 
-      $state.go('login')
+      $state.go('login');
       $ionicHistory.clearHistory();
       $ionicHistory.clearCache();
-    }
+    };
   /**
    * 跳转到用户信息
    */
   $scope.goMessage = function () {
-    cordova.InAppBrowser.open('http://www.majiamen.com/message.php','_self')
+    /*cordova.InAppBrowser.open('http://www.majiamen.com/message.php','_self')*/
 
-  }
-})
+  };
+});

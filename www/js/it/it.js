@@ -4,4 +4,4 @@
 angular.module('mjm.tab.it', [])
   .controller('itCtrl', function () {
 
-  })
+  });

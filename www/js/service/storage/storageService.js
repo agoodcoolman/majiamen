@@ -7,14 +7,14 @@ angular.module("mjm.storageService", [])
 
    Storage.save = function (key, value) {
       localStorage.setItem(key, value);
-   }
+   };
    Storage.delete = function (key) {
      return localStorage.removeItem(key);
-   }
+   };
 
    Storage.get = function (key) {
      return localStorage.getItem(key);
 
-   }
+   };
    return Storage;
-})
+});

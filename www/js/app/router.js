@@ -12,13 +12,13 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
       .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html'
+        templateUrl: "tabs.html"
       })
 
       // Each tab has its own nav history stack:
       .state("login", {
         url: '/login',
-        templateUrl: 'templates/login/login.html',
+        templateUrl: "login/login.html",
         controller: 'loginCtrl'
 
       })
@@ -26,7 +26,7 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         url: '/it',
         views: {
           'tab-it': {
-            templateUrl: 'templates/tab-it.html',
+            templateUrl: "tab-it.html",
             controller: 'itCtrl'
           }
         }
@@ -35,7 +35,7 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         url: '/your',
         views: {
           'tab-your': {
-            templateUrl: 'templates/tab-your.html',
+            templateUrl: "tab-your.html",
             controller: 'yourCtrl'
           }
         }
@@ -44,7 +44,7 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         url: '/chats/:chatId',
         views: {
           'tab-chats': {
-            templateUrl: 'templates/chat-detail.html',
+            templateUrl: "chat-detail.html",
             controller: 'ChatDetailCtrl'
           }
         }
@@ -54,7 +54,7 @@ routermodule.config(function($stateProvider, $urlRouterProvider) {
         url: '/wo',
         views: {
           'tab-wo': {
-            templateUrl: 'templates/tab-wo.html',
+            templateUrl: "tab-wo.html",
             controller: 'woCtrl'
           }
         }
