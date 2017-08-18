@@ -1,0 +1,59 @@
+
+<ion-view view-title="登陆" >
+    <ion-content class="contentFlow" >
+      <div class="logo" style="text-align: center;margin-top: 20px" >
+        <div>
+          <img src="img/logo.png">
+        </div>
+      </div>
+      <div class="list card">
+        <div class="item item-input">
+          <i class="ion ion-android-phone-portrait positive iconMargin"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="tel" maxlength="11" placeholder="账号" ng-model="username" >
+        </div>
+
+        <div class="item item-input">
+          <i class="ion ion-ios-locked positive iconMargin"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="password" placeholder="密码" ng-model="password">
+        </div>
+
+        <div class="item item-input" ng-click="openPopover($event)" >
+          <i class="ion ion-android-phone-portrait positive"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="安全问题" ng-model="choice_question" disabled="false">
+        </div>
+
+        <div class="item item-input" ng-if="questionsType == -1" >
+          <i class="ion ion-android-phone-portrait positive"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="自定义安全问题" ng-model="custom_question" >
+        </div>
+        <div class="item item-input" >
+          <i class="icon ion-lock-combination positive "></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="您的答案" ng-model="choice_question_answer" >
+        </div>
+
+        <div class="item item-input" >
+          <i class="icon ion-lock-combination positive "></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" placeholder="验证码" ng-model="gdcode.code" />
+        </div>
+        <div class="row" >
+          <img id="code" class="col col-50 col-offset-25" ng-src="http://www.majiamen.com/ck.php?nowtime={{nowtime}}" ng-click="flush()"/>
+
+        </div>
+      </div>
+      <div class="button button-block button-positive" ng-click="login()">登录</div>
+
+      <a  class="forgetPwd" ng-click="showforgetPassword()">忘记密码?</a>
+
+
+      <div class="center">
+        <i>&copy;2017 MaJiaMen</i>
+      </div>
+    </ion-content>
+
+</ion-view>
