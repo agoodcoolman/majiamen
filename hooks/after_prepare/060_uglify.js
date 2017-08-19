@@ -6,8 +6,8 @@ var UglifyJS = require('uglify-js');
 var CleanCSS = require('clean-css');
 var ngAnnotate = require('ng-annotate');
 var cssMinifier = new CleanCSS({
-    noAdvanced: true, // disable advanced optimizations - selector & property merging, reduction, etc.
-    keepSpecialComments: 0 // remove all css comments ('*' to keep all, 1 to keep first comment only)
+    // noAdvanced: true, // disable advanced optimizations - selector & property merging, reduction, etc.
+    // specialComments: 0 // remove all css comments ('*' to keep all, 1 to keep first comment only)
 });
 
 var rootDir = process.argv[2];
@@ -81,9 +81,9 @@ function compress(file) {
             break;
         case '.css':
             console.log('minifying css file ' + file);
-            /*var source = fs.readFileSync(file, 'utf8');
+            var source = fs.readFileSync(file, 'utf8');
             var result = cssMinifier.minify(source);
-            fs.writeFileSync(file, result, 'utf8'); // overwrite the original unminified file*/
+            fs.writeFileSync(file, result, 'utf8'); // overwrite the original unminified file
             break;
         default:
             console.log('encountered a ' + ext + ' file, not compressing it');
