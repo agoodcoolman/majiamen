@@ -63,7 +63,10 @@ var androidPlatformsDir_www_js = path.resolve(__dirname, '../../platforms/androi
 var androidPlatformsDir_www_index = path.resolve(__dirname, '../../platforms/android/assets/www/index.html');
 
 console.log("Moving dist files to Android platform");
+console.log("__dirname", __dirname);
 mv(androidPlatformsDir_dist_css, androidPlatformsDir_www_css, {mkdirp: true}, function(err) {
+  console.log('androidPlatformsDir_dist_css', androidPlatformsDir_dist_css);
+  console.log('androidPlatformsDir_www_css', androidPlatformsDir_www_css);
   if(typeof err != 'undefined')
   {
     console.log("err");

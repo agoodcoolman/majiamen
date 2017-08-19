@@ -11,8 +11,8 @@ var useref = require('gulp-useref');
 var paths = {
   sass: ['./scss/**/*.scss'],
   templatecache: ['./www/templates/**/*.html'],
-  ng_annotate: ['./www/js/*.js'],
-  useref: ['./www/templates/**/*.html']
+  ng_annotate: ['./www/js/**/*.js'],
+  useref: ['./www/*.html']
 };
 
 gulp.task('templatecache', function (done) {
@@ -24,7 +24,7 @@ gulp.task('templatecache', function (done) {
 
 gulp.task('useref', function (done) {
   var assets = useref.assets();
-  gulp.src('./www/templates/**/*.html')
+  gulp.src('./www/*.html')
     .pipe(assets)
     .pipe(assets.restore())
     .pipe(useref())
@@ -33,7 +33,7 @@ gulp.task('useref', function (done) {
 });
 
 gulp.task('ng_annotate', function (done) {
-  gulp.src('./www/js/*.js')
+  gulp.src('./www/js/**/*.js')
     .pipe(ngAnnotate({single_quotes: true}))
     .pipe(gulp.dest('./www/dist/dist_js/app'))
     .on('end', done);
